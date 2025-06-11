@@ -1,6 +1,6 @@
-# Modern Blog Platform
+# Modern POSTS TEST Platform
 
-A feature-rich blog platform built with Next.js 13+, React Query, and Tailwind CSS. This application provides a modern, responsive interface for creating, reading, updating, and deleting blog posts with rich text editing capabilities.
+A feature-rich POSTS platform built with Next.js 13+, React Query, and Tailwind CSS. This application provides a modern, responsive interface for creating, reading, updating, and deleting blog posts with rich text editing capabilities.
 
 ## 🚀 Features
 
@@ -34,10 +34,13 @@ A feature-rich blog platform built with Next.js 13+, React Query, and Tailwind C
 
 - **Framework**: Next.js 13+ (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: 
+  - Tailwind CSS
+  - shadcn/ui (Component Library)
 - **State Management**: React Query
 - **UI Components**: 
-  - Radix UI (Dialog, Tooltip, Slot)
+  - shadcn/ui components
+  - Radix UI primitives
   - Custom components with Tailwind
 - **Rich Text Editor**: TipTap
 - **Icons**: Lucide React
@@ -57,12 +60,26 @@ cd [project-name]
 pnpm install
 ```
 
-3. Create a `.env.local` file in the root directory and add your environment variables:
+3. Install shadcn/ui components:
+```bash
+pnpm dlx shadcn-ui@latest init
+```
+
+4. Add required shadcn/ui components:
+```bash
+pnpm dlx shadcn-ui@latest add button
+pnpm dlx shadcn-ui@latest add card
+pnpm dlx shadcn-ui@latest add dialog
+pnpm dlx shadcn-ui@latest add toast
+pnpm dlx shadcn-ui@latest add theme-toggle
+```
+
+5. Create a `.env.local` file in the root directory and add your environment variables:
 ```env
 NEXT_PUBLIC_API_URL=your_api_url_here
 ```
 
-4. Start the development server:
+6. Start the development server:
 ```bash
 pnpm dev
 ```
@@ -78,7 +95,7 @@ src/
 │   │   └── [id]/         # Dynamic post routes
 │   └── layout.tsx        # Root layout
 ├── components/            # React components
-│   ├── ui/              # Reusable UI components
+│   ├── ui/              # shadcn/ui components
 │   └── PostModal.tsx    # Post creation/editing modal
 ├── api/                  # API integration
 │   └── posts.ts         # Post-related API functions
@@ -107,7 +124,11 @@ src/
 
 ## 🎨 Theme Customization
 
-The application supports both light and dark modes. The theme can be toggled using the theme toggle button in the header. The theme preference is persisted across sessions.
+The application uses shadcn/ui's theming system with Tailwind CSS. The theme can be customized by:
+
+1. Modifying the `tailwind.config.js` file
+2. Updating the CSS variables in `globals.css`
+3. Using the theme toggle component for light/dark mode
 
 ## 🔧 Development
 
@@ -138,6 +159,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
 - [TipTap](https://tiptap.dev/)
 - [Radix UI](https://www.radix-ui.com/)
 - [React Query](https://tanstack.com/query/latest)
