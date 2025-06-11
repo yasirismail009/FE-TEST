@@ -9,8 +9,8 @@ import ErrorAlert from '@/components/ErrorAlert';
 import { PostModal } from '@/components/PostModal';
 import DeleteConfirmationModal from '@/components/DeleteConfirmationModal';
 import { useToast } from '@/components/ToastProvider';
-import AdminLayout from './page/adminLayout';
-import { Key, Pencil, Trash2 } from 'lucide-react';
+import AdminLayout from '@/components/admin/AdminLayout';
+import { Key, Pencil, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
@@ -22,10 +22,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Pagination } from '@/components/ui/pagination';
+import { useRouter } from 'next/navigation';
 
 export default function AdminDashboardPage() {
   const queryClient = useQueryClient();
   const { showToast } = useToast();
+  const router = useRouter();
   
   // View mode state
   const [viewMode, setViewMode] = useState<'table' | 'card'>('table');
@@ -134,6 +136,10 @@ export default function AdminDashboardPage() {
     }
   }
 
+  function handleView(post: Post) {
+    router.push(`/posts/${post.id}`);
+  }
+
   const handleCreatePost = (data: { title: string; content: string; author: string }) => {
     if (modalMode === 'create') {
       createMutation.mutate({ title: data.title, body: data.content });
@@ -227,10 +233,13 @@ export default function AdminDashboardPage() {
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-2">
-                            <Button variant="secondary" size="icon" className="bg-yellow-400  cursor-pointer  hover:bg-yellow-500 text-white" onClick={() => handleEdit(post)} title="Edit post">
+                            <Button variant="secondary" size="icon" className="bg-blue-400 cursor-pointer hover:bg-blue-500 text-white" onClick={() => handleView(post)} title="View post">
+                              <Eye size={16} />
+                            </Button>
+                            <Button variant="secondary" size="icon" className="bg-yellow-400 cursor-pointer hover:bg-yellow-500 text-white" onClick={() => handleEdit(post)} title="Edit post">
                               <Pencil size={16} />
                             </Button>
-                            <Button variant="destructive" size="icon" className="bg-red-600  cursor-pointer  hover:bg-red-700 text-white" onClick={() => handleDelete(post)} title="Delete post">
+                            <Button variant="destructive" size="icon" className="bg-red-600 cursor-pointer hover:bg-red-700 text-white" onClick={() => handleDelete(post)} title="Delete post">
                               <Trash2 size={16} />
                             </Button>
                           </div>
@@ -256,10 +265,13 @@ export default function AdminDashboardPage() {
                     <h3 className="text-lg font-semibold mb-1 text-gray-900 dark:text-white">{post.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-2">{post.body.slice(0, 100)}...</p>
                     <div className="flex justify-end gap-2 mt-auto">
-                      <Button variant="secondary" size="icon" className=" cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-white" onClick={() => handleEdit(post)} title="Edit post">
+                      <Button variant="secondary" size="icon" className="cursor-pointer bg-blue-400 hover:bg-blue-500 text-white" onClick={() => handleView(post)} title="View post">
+                        <Eye size={16} />
+                      </Button>
+                      <Button variant="secondary" size="icon" className="cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-white" onClick={() => handleEdit(post)} title="Edit post">
                         <Pencil size={16} />
                       </Button>
-                      <Button variant="destructive" size="icon" className=" cursor-pointer bg-red-600 hover:bg-red-700 text-white" onClick={() => handleDelete(post)} title="Delete post">
+                      <Button variant="destructive" size="icon" className="cursor-pointer bg-red-600 hover:bg-red-700 text-white" onClick={() => handleDelete(post)} title="Delete post">
                         <Trash2 size={16} />
                       </Button>
                     </div>

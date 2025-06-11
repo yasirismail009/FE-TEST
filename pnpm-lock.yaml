@@ -29,9 +29,6 @@ importers:
       '@tiptap/extension-code-block-lowlight':
         specifier: ^2.14.0
         version: 2.14.0(@tiptap/core@2.14.0(@tiptap/pm@2.14.0))(@tiptap/extension-code-block@2.14.0(@tiptap/core@2.14.0(@tiptap/pm@2.14.0))(@tiptap/pm@2.14.0))(@tiptap/pm@2.14.0)(highlight.js@11.11.1)(lowlight@3.3.0)
-      '@tiptap/extension-highlight':
-        specifier: ^2.14.0
-        version: 2.14.0(@tiptap/core@2.14.0(@tiptap/pm@2.14.0))
       '@tiptap/extension-image':
         specifier: ^2.14.0
         version: 2.14.0(@tiptap/core@2.14.0(@tiptap/pm@2.14.0))
@@ -887,11 +884,6 @@ packages:
 
   '@tiptap/extension-heading@2.14.0':
     resolution: {integrity: sha512-vM//6G3Ox3mxPv9eilhrDqylELCc8kEP1aQ4xUuOw7vCidjNtGggOa1ERnnpV2dCa2A9E8y4FHtN4Xh29stXQg==}
-    peerDependencies:
-      '@tiptap/core': ^2.7.0
-
-  '@tiptap/extension-highlight@2.14.0':
-    resolution: {integrity: sha512-21eouZEuCBFrpGeefnnU9yJ1SH32L9gSlT9MOJXBSXCX5HFskNLdN8Q4cQSyRXSt6r5kEz1GG5a4I805/U2TMQ==}
     peerDependencies:
       '@tiptap/core': ^2.7.0
 
@@ -3223,10 +3215,6 @@ snapshots:
       '@tiptap/core': 2.14.0(@tiptap/pm@2.14.0)
 
   '@tiptap/extension-heading@2.14.0(@tiptap/core@2.14.0(@tiptap/pm@2.14.0))':
-    dependencies:
-      '@tiptap/core': 2.14.0(@tiptap/pm@2.14.0)
-
-  '@tiptap/extension-highlight@2.14.0(@tiptap/core@2.14.0(@tiptap/pm@2.14.0))':
     dependencies:
       '@tiptap/core': 2.14.0(@tiptap/pm@2.14.0)
 
